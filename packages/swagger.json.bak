@@ -1,0 +1,245 @@
+{
+  "openapi": "3.0.1",
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local Server"
+    }
+  ],
+  "info": {
+    "version": "0.0.1",
+    "title": "val-framework",
+    "description": "",
+    "license": {
+      "name": "UNLICENSED"
+    }
+  },
+  "paths": {
+    "/user": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IUser"
+              }
+            }
+          },
+          "required": true,
+          "x-nestia-encrypted": false
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "x-nestia-encrypted": false
+          }
+        },
+        "x-nestia-namespace": "user.create",
+        "x-nestia-jsDocTags": [],
+        "x-nestia-method": "POST"
+      },
+      "get": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "readUserDto",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IEntityPrimaryKey"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "x-nestia-encrypted": false
+          }
+        },
+        "x-nestia-namespace": "user.read",
+        "x-nestia-jsDocTags": [],
+        "x-nestia-method": "GET"
+      },
+      "patch": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IUpdateUserDto"
+              }
+            }
+          },
+          "required": true,
+          "x-nestia-encrypted": false
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "x-nestia-encrypted": false
+          }
+        },
+        "x-nestia-namespace": "user.update",
+        "x-nestia-jsDocTags": [],
+        "x-nestia-method": "PATCH"
+      },
+      "delete": {
+        "tags": [],
+        "parameters": [
+          {
+            "name": "deleteUserDto",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/IEntityPrimaryKey"
+            },
+            "description": "",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "x-nestia-encrypted": false
+          }
+        },
+        "x-nestia-namespace": "user.$delete",
+        "x-nestia-jsDocTags": [],
+        "x-nestia-method": "DELETE"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "IUser": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
+          },
+          "email": {
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string",
+            "format": "email",
+            "x-typia-typeTags": [
+              {
+                "target": "string",
+                "name": "Format<\"email\">",
+                "kind": "format",
+                "value": "email",
+                "validate": "/^(([^<>()[\\]\\.,;:\\s@\\\"]+(\\.[^<>()[\\]\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@(([^<>()[\\]\\.,;:\\s@\\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\\"]{2,})$/i.test($input)",
+                "exclusive": [
+                  "pattern"
+                ]
+              }
+            ]
+          },
+          "password": {
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "name",
+          "email",
+          "password"
+        ],
+        "x-typia-jsDocTags": []
+      },
+      "IEntityPrimaryKey": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "id"
+        ],
+        "x-typia-jsDocTags": []
+      },
+      "IUpdateUserDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "x-typia-required": true,
+            "x-typia-optional": false,
+            "type": "string"
+          },
+          "name": {
+            "x-typia-required": false,
+            "x-typia-optional": false,
+            "type": "string"
+          },
+          "email": {
+            "x-typia-required": false,
+            "x-typia-optional": false,
+            "type": "string",
+            "format": "email",
+            "x-typia-typeTags": [
+              {
+                "target": "string",
+                "name": "Format<\"email\">",
+                "kind": "format",
+                "value": "email",
+                "validate": "/^(([^<>()[\\]\\.,;:\\s@\\\"]+(\\.[^<>()[\\]\\.,;:\\s@\\\"]+)*)|(\\\".+\\\"))@(([^<>()[\\]\\.,;:\\s@\\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\\"]{2,})$/i.test($input)",
+                "exclusive": [
+                  "pattern"
+                ]
+              }
+            ]
+          },
+          "password": {
+            "x-typia-required": false,
+            "x-typia-optional": false,
+            "type": "string"
+          }
+        },
+        "nullable": false,
+        "required": [
+          "id"
+        ],
+        "x-typia-jsDocTags": []
+      }
+    }
+  }
+}

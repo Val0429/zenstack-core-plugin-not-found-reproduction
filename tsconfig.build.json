@@ -1,0 +1,15 @@
+/*
+ * File: tsconfig.build.json
+ * File Created: 2023-09-20 08:27:25
+ * Author: Val Liu (valuis0429@gmail.com)
+ * 
+ * -----
+ * Last Modified:
+ * Modified By:
+ * -----
+ */
+
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+}

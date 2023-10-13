@@ -1,0 +1,65 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "paths": {
+      "@app/user": [
+        "libs/user/src"
+      ],
+      "@app/user/*": [
+        "libs/user/src/*"
+      ],
+      "@app/app-host": [
+        "libs/app-host/src"
+      ],
+      "@app/app-host/*": [
+        "libs/app-host/src/*"
+      ],
+      "@app/swagger": [
+        "libs/swagger/src"
+      ],
+      "@app/swagger/*": [
+        "libs/swagger/src/*"
+      ],
+      "@app/auth": [
+        "libs/auth/src"
+      ],
+      "@app/auth/*": [
+        "libs/auth/src/*"
+      ],
+      "@app/prisma": [
+        "libs/prisma/src"
+      ],
+      "@app/prisma/*": [
+        "libs/prisma/src/*"
+      ]
+    },
+    "plugins": [
+      {
+        "transform": "typia/lib/transform"
+      },
+      {
+        "transform": "@nestia/core/lib/transform",
+        "validate": "assertEquals",
+        "stringify": "assert"
+      }
+    ]
+  }
+}

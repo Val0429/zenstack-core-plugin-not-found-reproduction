@@ -1,0 +1,43 @@
+datasource db {
+    provider = "sqlserver"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["views"]
+}
+
+plugin prisma {
+    provider = "@core/prisma"
+    output = "./src/prisma/schema.prisma"
+    format = true
+}
+
+plugin zod {
+    provider = "@core/model-meta"
+    output = "node_modules/.zenstack"
+    compile = false
+}
+
+// generator markdown {
+//     provider = "prisma-markdown"
+//     title    = "PROJECT"
+//     output   = "../../packages/ERD.md"
+// }
+
+//----------------------------------
+// USER
+//----------------------------------
+model User {
+    id Int @id @default(autoincrement())
+
+    /// @minLength 3
+    /// @maxLength 30
+    username String @unique
+    //email    String @unique
+    password String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
